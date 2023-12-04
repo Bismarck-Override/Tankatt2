@@ -18,8 +18,6 @@ public class Tank extends OpMode {
     double rightSpeed = 0.75; */
     double topSpeed = 1.0;
 
-    double multiplier = 0.7;
-
     @Override
     public void init() {
         robot = new Robot(telemetry, hardwareMap);
@@ -30,14 +28,16 @@ public class Tank extends OpMode {
 
     @Override
     public void loop() {
-        double x = (-gamepad1.left_stick_y * multiplier);
+        double x = (-gamepad1.left_stick_y);
 
-        double r =(gamepad1.right_stick_x * multiplier);
+        double r =(gamepad1.right_stick_x);
 
         robot.drive.leftFront.setPower((x + r) * topSpeed);
         robot.drive.leftBack.setPower((x + r) * topSpeed);
         robot.drive.rightFront.setPower((x - r)* topSpeed);
         robot.drive.rightBack.setPower((x - r)* topSpeed);
+
+
 
 
         telemetry.update();

@@ -9,14 +9,14 @@ public class Gantry {
     private DcMotorEx gantry;
 
     public Gantry(HardwareMap hardwareMap){
-        gantry = hardwareMap.get(DcMotorEx.class, "GantryMotor");
+        gantry = hardwareMap.get(DcMotorEx.class, "gantryMotor");
         gantryPower = Range.clip(gantryPower, -1.0, 1.0);
         gantry.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
     double gantryPower;
 
-    public void setGantryPower(){
+    public void setGantryPower(double gantryPower){
         gantry.setPower(gantryPower);
     }
 }

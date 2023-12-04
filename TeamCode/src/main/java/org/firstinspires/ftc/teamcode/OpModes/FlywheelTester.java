@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.Local.Robot;
 public class FlywheelTester extends OpMode {
 
     Robot robot;
-    double motorRpm = 1620;
+    double motorRpm = 6000;
 
     @Override
     public void init() {
@@ -27,8 +27,8 @@ public class FlywheelTester extends OpMode {
         double leftTrigger = gamepad1.right_trigger;
         double leftRpm = motorRpm * leftTrigger;
 
-        robot.setLeftFlywheelPower(leftRpm);
-        robot.setRightFlywheelPower(rightRpm);
+        robot.setLeftFlywheelPower(leftTrigger);
+        robot.setRightFlywheelPower(rightTrigger);
 
         telemetry.update();
     }

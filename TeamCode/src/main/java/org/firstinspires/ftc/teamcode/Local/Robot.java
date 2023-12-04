@@ -9,6 +9,8 @@ public class Robot {
 
     public Flywheel flywheel;
 
+    public Gantry gantry;
+
     public Robot(Telemetry telemetry, HardwareMap hardwareMap) {
         drive = new Drive(hardwareMap);
     }
@@ -18,10 +20,14 @@ public class Robot {
     }
 
     public void setRightFlywheelPower(double rightPower) {
-        flywheel.setRightPower();
+        flywheel.setRightPower(rightPower);
     }
 
     public void setLeftFlywheelPower(double leftPower) {
-        flywheel.setLeftPower();
+        flywheel.setLeftPower(leftPower);
+    }
+
+    public void setGantryPower(double gantryPower) {
+        gantry.setGantryPower(gantryPower);
     }
 }
