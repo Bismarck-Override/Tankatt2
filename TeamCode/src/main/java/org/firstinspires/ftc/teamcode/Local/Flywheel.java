@@ -20,12 +20,12 @@ public class Flywheel {
 
    double leftPower;
     double rightPower;
-    public void setLeftPower(double leftPower){
-        flywheelL.setPower(leftPower);
+    public void setLeftPower(float leftPower1){
+        flywheelL.setPower(leftPower1);
     }
 
-    public void setRightPower(double rightPower){
-        flywheelR.setPower(rightPower);
+    public void setRightPower(float rightPower1){
+        flywheelR.setPower(rightPower1);
     }
 
 }

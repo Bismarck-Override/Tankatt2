@@ -6,12 +6,19 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Local.Drive;
+import org.firstinspires.ftc.teamcode.Local.Flywheel;
+import org.firstinspires.ftc.teamcode.Local.Gantry;
+import org.firstinspires.ftc.teamcode.Local.RackServo;
 import org.firstinspires.ftc.teamcode.Local.Robot;
 
 @TeleOp(name = "Tank Drive")
 public class Tank extends OpMode {
 
     Robot robot;
+    RackServo rackServo;
+
+    Flywheel flywheel;
+    Gantry gantry;
 
     /*double lowSpeed = 0.25;
     double leftSpeed = 0.5;
@@ -21,6 +28,9 @@ public class Tank extends OpMode {
     @Override
     public void init() {
         robot = new Robot(telemetry, hardwareMap);
+        flywheel = new Flywheel(hardwareMap);
+        gantry = new Gantry(hardwareMap);
+        rackServo = new RackServo(hardwareMap);
 
         telemetry.addLine("Ready");
         telemetry.update();
@@ -28,19 +38,49 @@ public class Tank extends OpMode {
 
     @Override
     public void loop() {
-        double x = (-gamepad1.left_stick_y);
+        double l = (-gamepad1.left_stick_y);
 
-        double r =(gamepad1.right_stick_x);
+        double r = (-gamepad1.right_stick_y);
 
-        robot.drive.leftFront.setPower((x + r) * topSpeed);
-        robot.drive.leftBack.setPower((x + r) * topSpeed);
-        robot.drive.rightFront.setPower((x - r)* topSpeed);
-        robot.drive.rightBack.setPower((x - r)* topSpeed);
+        robot.drive.leftFront.setPower((l) * topSpeed);
+        robot.drive.leftBack.setPower((l) * topSpeed);
+        robot.drive.rightFront.setPower((r) * topSpeed);
+        robot.drive.rightBack.setPower((r) * topSpeed);
 
+        if (gamepad2.right_trigger > 0) {
+            flywheel.setRightPower(gamepad2.right_trigger);
+        }
+        else{
+            flywheel.setRightPower(0);
+        }
 
+        if (gamepad2.left_trigger > 0) {
+            flywheel.setLeftPower(-gamepad2.left_trigger);
+        }
+        else{
+            flywheel.setLeftPower(0);
+        }
+            if (gamepad2.right_bumper) {
+                gantry.setGantryPower(1);
+            } else {
+                gantry.setGantryPower(0);
+            }
 
+            if (gamepad2.left_bumper) {
+                gantry.setGantryPower(-1);
+            } else {
+                gantry.setGantryPower(0);
+            }
 
-        telemetry.update();
+            if (gamepad2.a) {
+                rackServo.setPrimed();
+            }
+
+            if (gamepad2.b) {
+                rackServo.setLoading();
+            }
+
+            telemetry.update();
+        }
     }
-}
 

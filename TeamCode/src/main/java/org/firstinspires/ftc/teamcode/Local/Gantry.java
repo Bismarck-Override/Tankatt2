@@ -16,7 +16,7 @@ public class Gantry {
 
     double gantryPower;
 
-    public void setGantryPower(double gantryPower){
-        gantry.setPower(gantryPower);
+    public void setGantryPower(double gantryPower1){
+        gantry.setPower(gantryPower1);
     }
 }

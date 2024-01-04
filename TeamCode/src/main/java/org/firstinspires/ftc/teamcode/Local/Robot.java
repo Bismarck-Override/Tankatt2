@@ -10,6 +10,7 @@ public class Robot {
     public Flywheel flywheel;
 
     public Gantry gantry;
+    public RackServo rackServo;
 
     public Robot(Telemetry telemetry, HardwareMap hardwareMap) {
         drive = new Drive(hardwareMap);
@@ -19,15 +20,15 @@ public class Robot {
         drive.setMotorPowers(power);
     }
 
-    public void setRightFlywheelPower(double rightPower) {
-        flywheel.setRightPower(rightPower);
+    public void setLeftFlywheelPower(float leftTrigger){
+        flywheel.setLeftPower(leftTrigger);
+    }
+    public void setRightFlywheelPower(float rightTrigger){
+        flywheel.setRightPower(rightTrigger);
     }
 
-    public void setLeftFlywheelPower(double leftPower) {
-        flywheel.setLeftPower(leftPower);
-    }
 
-    public void setGantryPower(double gantryPower) {
-        gantry.setGantryPower(gantryPower);
-    }
+
+    public void setRoundPrime(){rackServo.setPrimed();}
+    public void setRoundLoading(){rackServo.setLoading();}
 }

@@ -21,11 +21,11 @@ public class FlywheelTester extends OpMode {
     @Override
     public void loop() {
 
-        double rightTrigger = gamepad1.right_trigger;
-        double rightRpm = motorRpm * rightTrigger;
+        float rightTrigger = gamepad1.right_trigger;
 
-        double leftTrigger = gamepad1.right_trigger;
-        double leftRpm = motorRpm * leftTrigger;
+
+        float leftTrigger = gamepad1.right_trigger;
+
 
         robot.setLeftFlywheelPower(leftTrigger);
         robot.setRightFlywheelPower(rightTrigger);

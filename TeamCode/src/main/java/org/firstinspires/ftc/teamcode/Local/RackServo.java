@@ -4,8 +4,8 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
 public class RackServo {
-    double primed;
-    double loading;
+    double primed = 0.64;
+    double loading= 0.255;
     Servo rackServo;
 
     public RackServo(HardwareMap hardwareMap){
